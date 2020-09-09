@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+import {get} from 'lodash'
 
 try {
     // `who-to-greet` input defined in action metadata file
@@ -9,8 +10,9 @@ try {
     core.setOutput("time", time);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
-    const whoCommited = payload.commits.length
+    const whoCommited = get(payload, "commits")
     console.log(`There where: ${whoCommited} commits`);
+    console.log(payload)
 } catch (error) {
     core.setFailed(error.message);
 }
