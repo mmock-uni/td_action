@@ -116,6 +116,7 @@ const glob = __webpack_require__(762)
 const find = async () => {
     console.log("find start")
     const globber = await glob.create('*')
+    console.log(globber)
 
     console.log("glob created")
 
@@ -132,9 +133,12 @@ try {
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
 
-    find()
+    find().then(() => {
+            console.log('all done')
+        }
+    )
 
-    console.log('all done')
+
 } catch (error) {
     core.setFailed(error.message);
 }
