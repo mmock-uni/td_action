@@ -5,12 +5,7 @@ import {get} from 'lodash'
 
 const find = async () => {
     console.log("find start")
-    const globber = await glob.create('**')
-    console.log(globber)
-
-    console.log("glob created")
-
-    console.log(globber.globGenerator())
+    const globber = await glob.create('src/*')
 
     for await (const file of globber.globGenerator()) {
         console.log(file)

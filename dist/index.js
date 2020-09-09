@@ -40,7 +40,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(52);
+/******/ 		return __webpack_require__(776);
 /******/ 	};
 /******/ 	// initialize runtime
 /******/ 	runtime(__webpack_require__);
@@ -98,52 +98,6 @@ function getApiBaseUrl() {
 }
 exports.getApiBaseUrl = getApiBaseUrl;
 //# sourceMappingURL=utils.js.map
-
-/***/ }),
-
-/***/ 52:
-/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(559);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-const core = __webpack_require__(694);
-const github = __webpack_require__(136);
-const glob = __webpack_require__(762)
-
-
-const find = async () => {
-    console.log("find start")
-    const globber = await glob.create('**')
-    console.log(globber)
-
-    console.log("glob created")
-
-    console.log(globber.globGenerator())
-
-    for await (const file of globber.globGenerator()) {
-        console.log(file)
-    }
-    console.log('find done')
-}
-
-try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}!`);
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
-
-    find().then(() => {
-            console.log('all done')
-        }
-    )
-
-
-} catch (error) {
-    core.setFailed(error.message);
-}
 
 /***/ }),
 
@@ -23042,6 +22996,47 @@ function create(patterns, options) {
 }
 exports.create = create;
 //# sourceMappingURL=glob.js.map
+
+/***/ }),
+
+/***/ 776:
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(559);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+const core = __webpack_require__(694);
+const github = __webpack_require__(136);
+const glob = __webpack_require__(762)
+
+
+const find = async () => {
+    console.log("find start")
+    const globber = await glob.create('src/*')
+
+    for await (const file of globber.globGenerator()) {
+        console.log(file)
+    }
+    console.log('find done')
+}
+
+try {
+    // `who-to-greet` input defined in action metadata file
+    const nameToGreet = core.getInput('who-to-greet');
+    console.log(`Hello ${nameToGreet}!`);
+    const time = (new Date()).toTimeString();
+    core.setOutput("time", time);
+
+    find().then(() => {
+            console.log('all done')
+        }
+    )
+
+
+} catch (error) {
+    core.setFailed(error.message);
+}
 
 /***/ }),
 
