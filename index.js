@@ -5,7 +5,7 @@ import {get} from 'lodash'
 
 const find = async () => {
     console.log("find start")
-    const globber = await glob.create('*')
+    const globber = await glob.create('**')
     console.log(globber)
 
     console.log("glob created")

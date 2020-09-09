@@ -115,7 +115,7 @@ const glob = __webpack_require__(762)
 
 const find = async () => {
     console.log("find start")
-    const globber = await glob.create('*')
+    const globber = await glob.create('**')
     console.log(globber)
 
     console.log("glob created")
