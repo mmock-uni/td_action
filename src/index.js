@@ -10,7 +10,7 @@ const find = async () => {
 
     for await (const filePath of globber.globGenerator()) {
         console.log(filePath)
-        fs.readFile(filePath, (err, data) => {
+        fs.readFile(filePath, 'utf8', (err, data) => {
             console.log(data)
         })
     }
