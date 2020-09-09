@@ -120,6 +120,8 @@ const find = async () => {
 
     console.log("glob created")
 
+    console.log(globber.globGenerator())
+
     for await (const file of globber.globGenerator()) {
         console.log(file)
     }
