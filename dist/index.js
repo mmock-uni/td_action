@@ -113,7 +113,8 @@ const github = __webpack_require__(136);
 const glob = __webpack_require__(762)
 
 
-const find = async (globber)=> {
+const find = async ()=> {
+    const globber = await glob.create('*')
     for await (const file of globber.globGenerator()) {
         console.log(file)
     }
@@ -125,11 +126,8 @@ try {
     console.log(`Hello ${nameToGreet}!`);
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    const globOptions = {
-        followSymbolicLinks: true
-    }
-    const globber = glob.create('*', globOptions)
-    find(globber)
+
+    find()
 } catch (error) {
     core.setFailed(error.message);
 }

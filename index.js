@@ -3,7 +3,8 @@ const github = require('@actions/github');
 const glob = require('@actions/glob')
 import {get} from 'lodash'
 
-const find = async (globber)=> {
+const find = async ()=> {
+    const globber = await glob.create('*')
     for await (const file of globber.globGenerator()) {
         console.log(file)
     }
@@ -15,11 +16,8 @@ try {
     console.log(`Hello ${nameToGreet}!`);
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    const globOptions = {
-        followSymbolicLinks: true
-    }
-    const globber = glob.create('*', globOptions)
-    find(globber)
+
+    find()
 } catch (error) {
     core.setFailed(error.message);
 }
