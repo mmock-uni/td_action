@@ -1,6 +1,13 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const glob = require('@actions/glob')
 import {get} from 'lodash'
+
+const find = async (globber)=> {
+    for await (const file of globber.globGenerator()) {
+        console.log(file)
+    }
+}
 
 try {
     // `who-to-greet` input defined in action metadata file
@@ -8,11 +15,11 @@ try {
     console.log(`Hello ${nameToGreet}!`);
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    const whoCommited = get(payload, "commits")
-    console.log(`There where: ${whoCommited} commits`);
-    console.log(payload)
+    const globOptions = {
+        followSymbolicLinks: core.getInput('follow-symbolic-links').toUpper() !== 'FALSE'
+    }
+    const globber = glob.create('*', globOptions)
+    find(globber)
 } catch (error) {
     core.setFailed(error.message);
 }
