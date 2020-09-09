@@ -9,9 +9,7 @@ try {
     core.setOutput("time", time);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
-    const whoCommited = payload.commits
-        .map(single => single.committer.name)
-        .join(", ")
+    const whoCommited = payload.commits.length
     console.log(`The event payload: ${whoCommited}`);
 } catch (error) {
     core.setFailed(error.message);
