@@ -23015,8 +23015,14 @@ const find = async () => {
     console.log("find start")
     const globber = await glob.create('src/*')
 
-    for await (const file of globber.globGenerator()) {
-        console.log(file)
+    for await (const filePath of globber.globGenerator()) {
+        console.log(filePath)
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            console.log(e);
+        };
+        let text = reader.readAsText(filePath);
+        console.log(text)
     }
     console.log('find done')
 }
