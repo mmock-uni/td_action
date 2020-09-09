@@ -19,3 +19,6 @@ The time we greeted you.
 uses: actions/hello-world-javascript-action@v1
 with:
   who-to-greet: 'Mona the Octocat'
+  
+  
+// ncc build src/index && git add . && git commit -m "new build" && git tag -a -m "new release" v3.2.13 && git push --follow-tags
