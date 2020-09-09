@@ -23008,7 +23008,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 const core = __webpack_require__(694);
 const github = __webpack_require__(136);
-const glob = __webpack_require__(762)
+const glob = __webpack_require__(762);
+const fs = __webpack_require__(747);
 
 
 const find = async () => {
@@ -23017,12 +23018,9 @@ const find = async () => {
 
     for await (const filePath of globber.globGenerator()) {
         console.log(filePath)
-        let reader = new FileReader();
-        reader.onload = function(e) {
-            console.log(e);
-        };
-        let text = reader.readAsText(filePath);
-        console.log(text)
+        fs.readFile(filePath, (err, data) => {
+            console.log(data)
+        })
     }
     console.log('find done')
 }

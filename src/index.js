@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const glob = require('@actions/glob')
+const glob = require('@actions/glob');
+const fs = require('fs');
 import {get} from 'lodash'
 
 const find = async () => {
@@ -9,12 +10,9 @@ const find = async () => {
 
     for await (const filePath of globber.globGenerator()) {
         console.log(filePath)
-        let reader = new FileReader();
-        reader.onload = function(e) {
-            console.log(e);
-        };
-        let text = reader.readAsText(filePath);
-        console.log(text)
+        fs.readFile(filePath, (err, data) => {
+            console.log(data)
+        })
     }
     console.log('find done')
 }
