@@ -126,7 +126,7 @@ try {
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     const globOptions = {
-        followSymbolicLinks: "true".toUpper() !== 'FALSE'
+        followSymbolicLinks: true
     }
     const globber = glob.create('*', globOptions)
     find(globber)
