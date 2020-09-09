@@ -3,11 +3,16 @@ const github = require('@actions/github');
 const glob = require('@actions/glob')
 import {get} from 'lodash'
 
-const find = async ()=> {
+const find = async () => {
+    console.log("find start")
     const globber = await glob.create('*')
+
+    console.log("glob created")
+
     for await (const file of globber.globGenerator()) {
         console.log(file)
     }
+    console.log('find done')
 }
 
 try {
@@ -18,6 +23,8 @@ try {
     core.setOutput("time", time);
 
     find()
+
+    console.log('all done')
 } catch (error) {
     core.setFailed(error.message);
 }

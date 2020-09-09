@@ -113,11 +113,16 @@ const github = __webpack_require__(136);
 const glob = __webpack_require__(762)
 
 
-const find = async ()=> {
+const find = async () => {
+    console.log("find start")
     const globber = await glob.create('*')
+
+    console.log("glob created")
+
     for await (const file of globber.globGenerator()) {
         console.log(file)
     }
+    console.log('find done')
 }
 
 try {
@@ -128,6 +133,8 @@ try {
     core.setOutput("time", time);
 
     find()
+
+    console.log('all done')
 } catch (error) {
     core.setFailed(error.message);
 }
