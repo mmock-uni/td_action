@@ -39,16 +39,18 @@ const find = async () => {
     let errorsGlobal = [] //all errors over all files
 
     for await (const filePath of globber.globGenerator()) {
-        fs.readFile(filePath, 'utf8', (err, data) => {
+        fs.readFile(filePath, 'utf8').then(data => {
             if(data !== undefined) {
                 const changedData = data.toString().replace('"', '').split('\n')
-                const errors = findError(changedData)
-                if (errors.length > 0) {
-                    errorsGlobal.push({
-                        filePath,
-                        errors
-                    })
-                }
+                findError(changedData).then(errors =>{
+                    if (errors.length > 0) {
+                        errorsGlobal.push({
+                            filePath,
+                            errors
+                        })
+                    }
+                    console.log(errorsGlobal)
+                })
             }
         })
     }
