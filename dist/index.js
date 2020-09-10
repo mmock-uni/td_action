@@ -23018,10 +23018,10 @@ const findError = (data) => {
     let possibleError = []
     // eslint-disable-next-line
     data.map((single, i) => {
-        console.log(single)
+        console.log(`[${i}]: ${single}`)
         if(single.match(/switch\s*\(\s*.*\s*\)/g)) { //detects all switches
             possibleError.push((i + 1)) // array starts from 0 but the line count starts from 1
-            console.log(possibleError)
+            console.log('found an error')
         }
     })
 
