@@ -8,4 +8,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Hello world action step
         id: hello
-        uses: mmock-uni/td_action@v3.2.20.8
+        uses: mmock-uni/td_action@v3.2.20.9
