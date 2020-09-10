@@ -6,6 +6,7 @@ import {get} from 'lodash'
 
 
 const findError = (data) => {
+    console.log("looking for errors")
     let possibleError = []
     // eslint-disable-next-line
     data.map((single, i) => {
@@ -33,17 +34,15 @@ const findError = (data) => {
 
 
 const find = async () => {
-    console.log("find start")
     const globber = await glob.create('src/*')
 
     for await (const filePath of globber.globGenerator()) {
-        console.log(filePath)
-        await fs.readFile(filePath, 'utf8', (err, data) => {
+        fs.readFile(filePath, 'utf8', (err, data) => {
             console.log(filePath)
             console.log(findError(data))
+            console.log(findError(data).length)
         })
     }
-    console.log('find done')
 }
 
 try {
