@@ -42,15 +42,15 @@ const find = async () => {
         fs.readFile(filePath, 'utf8', (err, data) => {
             if(data !== undefined) {
                 const changedData = data.toString().replace('"', '').split('\n')
-                findError(changedData).then(errors =>{
-                    if (errors.length > 0) {
-                        errorsGlobal.push({
-                            filePath,
-                            errors
-                        })
-                    }
-                    console.log(errorsGlobal)
-                })
+                const errors = findError(changedData)
+                if (errors.length > 0) {
+                    errorsGlobal.push({
+                        filePath,
+                        errors
+                    })
+                }
+                console.log(errorsGlobal)
+
             }
         })
     }
