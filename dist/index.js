@@ -23042,7 +23042,7 @@ const findError = (data) => {
 
 
 const find = async () => {
-    const globber = await glob.create('![node_modules]')
+    const globber = await glob.create('src/*')
 
     let errorsGlobal = [] //all errors over all files
 
