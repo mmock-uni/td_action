@@ -43,7 +43,7 @@ const find = async () => {
             console.log('------------')
             console.log(filePath)
             console.log(data)
-            console.log(data.toString().split(/\\n/).length)
+            console.log(data.toString().split('\n').length)
             const changedData = data.toString().replace('"', '').split(/\\n/)
             const result = findError(changedData)
             console.log(result)
