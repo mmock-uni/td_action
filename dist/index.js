@@ -23048,8 +23048,12 @@ const find = async () => {
 
     for await (const filePath of globber.globGenerator()) {
         console.log(filePath)
-        /*
+        if(!filePath.toString().includes('node_modules'))
         await fs.readFile(filePath, 'utf8', (err, data) => {
+            console.log('=============================================')
+            console.log(filePath)
+            console.log(data)
+            /*
             if(data !== undefined) {
                 const changedData = data.toString().replace('"', '').split('\n')
                 const errors = findError(changedData)
@@ -23062,8 +23066,9 @@ const find = async () => {
                 console.log(errorsGlobal)
 
             }
+            */
         })
-        */
+
     }
 
     console.log(errorsGlobal)
