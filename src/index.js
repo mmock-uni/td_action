@@ -6,14 +6,11 @@ import {get} from 'lodash'
 
 
 const findError = (data) => {
-    console.log("looking for errors")
     let possibleError = []
     // eslint-disable-next-line
     data.map((single, i) => {
-        console.log(`[${i}]: ${single}`)
         if(single.match(/switch\s*\(\s*.*\s*\)/g)) { //detects all switches
             possibleError.push((i + 1)) // array starts from 0 but the line count starts from 1
-            console.log('found an error')
         }
     })
 
@@ -36,7 +33,7 @@ const findError = (data) => {
 
 
 const find = async () => {
-    const globber = await glob.create('src/test.js')
+    const globber = await glob.create('![node_modules]')
 
     let errorsGlobal = [] //all errors over all files
 
@@ -45,8 +42,6 @@ const find = async () => {
             console.log('------------')
             const changedData = data.toString().replace('"', '').split('\n')
             const errors = findError(changedData)
-            console.log(errors)
-            console.log(errors.length)
             errorsGlobal.push({
                 filePath,
                 errors
