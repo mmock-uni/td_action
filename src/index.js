@@ -38,15 +38,23 @@ const findError = (data) => {
 const find = async () => {
     const globber = await glob.create('src/test.js')
 
+    let errorsGlobal = [] //all errors over all files
+
     for await (const filePath of globber.globGenerator()) {
         fs.readFile(filePath, 'utf8', (err, data) => {
             console.log('------------')
             const changedData = data.toString().replace('"', '').split('\n')
-            const result = findError(changedData)
-            console.log(result)
-            console.log(result.length)
+            const errors = findError(changedData)
+            console.log(errors)
+            console.log(errors.length)
+            errorsGlobal.push({
+                filePath,
+                errors
+            })
         })
     }
+
+    console.log(errorsGlobal)
 }
 
 try {
