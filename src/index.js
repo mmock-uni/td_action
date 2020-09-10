@@ -12,6 +12,7 @@ const findError = (data) => {
     data.map((single, i) => {
         if(single.match(/switch\s*\(\s*.*\s*\)/g)) { //detects all switches
             possibleError.push((i + 1)) // array starts from 0 but the line count starts from 1
+            console.log(possibleError)
         }
     })
 
