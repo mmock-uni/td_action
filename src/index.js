@@ -39,7 +39,7 @@ const find = async () => {
     for await (const filePath of globber.globGenerator()) {
         fs.readFile(filePath, 'utf8', (err, data) => {
             console.log(filePath)
-            const changedData = data.split(/\\n/)
+            const changedData = data.replace('"', '').split(/\\n/)
             console.log(findError(changedData))
             console.log(findError(changedData).length)
         })
@@ -47,11 +47,6 @@ const find = async () => {
 }
 
 try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}!`);
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
 
     find().then(() => {
             console.log('all done')
