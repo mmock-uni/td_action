@@ -23012,6 +23012,34 @@ const glob = __webpack_require__(762);
 const fs = __webpack_require__(747);
 
 
+
+const findError = (data) => {
+    let possibleError = []
+    // eslint-disable-next-line
+    data.map((single, i) => {
+        if(single.match(/switch\s*\(\s*.*\s*\)/g)) { //detects all switches
+            possibleError.push((i + 1)) // array starts from 0 but the line count starts from 1
+        }
+    })
+
+    let errors = []
+    if(possibleError.length > 0){
+        for (let i = 0 ; i < possibleError.length ; ++i) {
+            let index = possibleError[i] - 1
+            let indexNext = i < possibleError.length - 1 ? possibleError[i + 1] - 1 + 1 : data.length - 1
+            let join = data
+                .slice(index, indexNext)
+                .join('')
+            if (join.match(/(switch\s*\(\s*.*\s*\)\s*{.*default:.*(\s*.*{(\s*|.*){(.*)}(\s*|.*)})?})/g) === null) {
+                //wrong switch found
+                errors.push('In the following line (' + possibleError[i] + ') is a wrongly coded switch statement! default value is missing!')
+            }
+        }
+    }
+    return errors
+}
+
+
 const find = async () => {
     console.log("find start")
     const globber = await glob.create('src/*')
@@ -23019,7 +23047,8 @@ const find = async () => {
     for await (const filePath of globber.globGenerator()) {
         console.log(filePath)
         await fs.readFile(filePath, 'utf8', (err, data) => {
-            console.log(data)
+            console.log(filePath)
+            console.log(findError(data))
         })
     }
     console.log('find done')
