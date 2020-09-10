@@ -42,7 +42,9 @@ const find = async () => {
         fs.readFile(filePath, 'utf8', (err, data) => {
             console.log('------------')
             console.log(filePath)
-            const changedData = data.replace('"', '').split(/\\n/)
+            console.log(data)
+            console.log(data.toString().split(/\\n/).length)
+            const changedData = data.toString().replace('"', '').split(/\\n/)
             const result = findError(changedData)
             console.log(result)
             console.log(result.length)

@@ -3,9 +3,9 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to controll the code
+    name: A job to control the code
     steps:
       - uses: actions/checkout@v2
       - name: Hello world action step
         id: hello
-        uses: mmock-uni/td_action@v3.2.19.3
+        uses: mmock-uni/td_action@v3.2.19.4
