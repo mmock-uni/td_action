@@ -6,6 +6,5 @@ jobs:
     name: A job to control the code
     steps:
       - uses: actions/checkout@v2
-      - name: Hello world action step
-        id: hello
-        uses: mmock-uni/td_action@v3.2.20.10
+      - name: checks the code right now
+        uses: mmock-uni/td_action@v3.2.20.11
