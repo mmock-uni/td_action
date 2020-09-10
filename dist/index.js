@@ -23036,6 +23036,7 @@ const findError = (data) => {
             }
         }
     }
+    console.log(errors)
     return errors
 }
 
