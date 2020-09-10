@@ -10,6 +10,7 @@ const findError = (data) => {
     let possibleError = []
     // eslint-disable-next-line
     data.map((single, i) => {
+        console.log(single)
         if(single.match(/switch\s*\(\s*.*\s*\)/g)) { //detects all switches
             possibleError.push((i + 1)) // array starts from 0 but the line count starts from 1
             console.log(possibleError)
@@ -35,14 +36,16 @@ const findError = (data) => {
 
 
 const find = async () => {
-    const globber = await glob.create('src/*')
+    const globber = await glob.create('src/test.js')
 
     for await (const filePath of globber.globGenerator()) {
         fs.readFile(filePath, 'utf8', (err, data) => {
+            console.log('------------')
             console.log(filePath)
             const changedData = data.replace('"', '').split(/\\n/)
-            console.log(findError(changedData))
-            console.log(findError(changedData).length)
+            const result = findError(changedData)
+            console.log(result)
+            console.log(result.length)
         })
     }
 }
