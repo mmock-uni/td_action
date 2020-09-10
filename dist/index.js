@@ -23050,10 +23050,12 @@ const find = async () => {
             console.log('------------')
             const changedData = data.toString().replace('"', '').split('\n')
             const errors = findError(changedData)
-            errorsGlobal.push({
-                filePath,
-                errors
-            })
+            if(errors.length > 0) {
+                errorsGlobal.push({
+                    filePath,
+                    errors
+                })
+            }
         })
     }
 
