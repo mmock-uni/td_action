@@ -23048,7 +23048,12 @@ const find = async () => {
 
     for await (const filePath of globber.globGenerator()) {
         await fs.readFile(filePath, 'utf8', (err, data) => {
-            if(!filePath.toString().includes('node_modules') === true)
+            if(
+                !filePath.toString().includes('node_modules') === true &&
+                !filePath.toString().includes('.git') === true &&
+                !filePath.toString().includes('.idea') === true
+
+            )
                 console.log(filePath)
 
             // if(data !== undefined) {
