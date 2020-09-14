@@ -32,3 +32,6 @@ jobs:
 - Check what the interaction of the action was like and deciding what next could be done
 
 ![image](https://user-images.githubusercontent.com/23076328/93134976-dc257580-f6d9-11ea-9ce5-caa0341cb55a.png)
+
+
+I tried to execute the functions from the file 'src/index.js' also locally, what worked, but then the code was not working on the github-docker anymore. Therefore, I decided always to make the effort for a commit with a new release tag to be able to test if its working...
