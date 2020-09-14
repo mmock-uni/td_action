@@ -1,24 +1,29 @@
-# Hello world javascript action
+# Technical Dept Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+### setup
 
-## Inputs
+In the following it is an example how a minimal yml file could look like, in oder to setup this action 
 
-### `who-to-greet`
+```
+on: [push]
 
-**Required** The name of the person to greet. Default `"World"`.
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to control the code
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mmock-uni/td_action@v3.2.20.33
+```
 
-## Outputs
+### Workflow
 
-### `time`
+- Change code, this could be for bug fix, new functionality, restructuring or something else!
 
-The time we greeted you.
+- Set a new release Tag in the yml file (.github/workflow/main.yml)
 
-## Example usage
+- Pushing the new code/release with the command `ncc build src/index && git add . && git commit -m "new build" && git tag -a -m "new release" v3.2.20.33 && git push --follow-tags`
 
-uses: actions/hello-world-javascript-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
-  
-  
-// ncc build src/index && git add . && git commit -m "new build" && git tag -a -m "new release" v3.2.13 && git push --follow-tags
+ `ncc build src/index` creates an optimised build (install ncc with `npm i -g @vercel/ncc`)
+ 
+- Check what the interaction of the action was like

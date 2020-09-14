@@ -60,14 +60,10 @@ const find = async () => {
                             errors
                         })
                     }
-                    console.log(errorsGlobal)
-
                 }
 
             })
 
-        } else {
-            console.log(`else ${filePath}`)
         }
     }
 
