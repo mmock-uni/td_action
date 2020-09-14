@@ -23052,7 +23052,7 @@ const find = async () => {
             !filePath.toString().includes('.git') === true &&
             !filePath.toString().includes('package') === true &&
             !filePath.toString().includes('dist') === true &&
-            !filePath.toString().includes('action') === true &&
+            !filePath.toString().includes('action.yml') === true &&
             !filePath.toString().includes('.idea') === true
         ) {
             await fs.readFile(filePath, 'utf8', (err, data) => {
