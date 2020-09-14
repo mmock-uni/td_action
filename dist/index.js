@@ -23056,6 +23056,7 @@ const find = async () => {
         ) {
             await fs.readFile(filePath, 'utf8', (err, data) => {
 
+                console.log(filePath)
 
                 if(data !== undefined) {
                     const changedData = data.toString().replace('"', '').split('\n')
@@ -23066,6 +23067,8 @@ const find = async () => {
                             errors
                         })
                     }
+                    console.log(errorsGlobal)
+
                 }
 
             })
@@ -23073,7 +23076,6 @@ const find = async () => {
         }
     }
 
-    console.log(errorsGlobal)
 }
 
 try {
