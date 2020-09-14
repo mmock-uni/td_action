@@ -39,32 +39,23 @@ const find = async () => {
     let errorsGlobal = [] //all errors over all files
 
     for await (const filePath of globber.globGenerator()) {
-        console.log(filePath)
-        if(filePath.toString().includes('node_modules')) continue
-        else if(filePath.toString().includes('.git')) continue
-        else if(filePath.toString().includes('.idea')) continue
-        else if(filePath.toString().includes('.github')) continue
-        else {
-            await fs.readFile(filePath, 'utf8', (err, data) => {
-                console.log('=============================================')
-                console.log(filePath)
-                //console.log(data)
-                /*
-                if(data !== undefined) {
-                    const changedData = data.toString().replace('"', '').split('\n')
-                    const errors = findError(changedData)
-                    if (errors.length > 0) {
-                        errorsGlobal.push({
-                            filePath,
-                            errors
-                        })
-                    }
-                    console.log(errorsGlobal)
+        await fs.readFile(filePath, 'utf8', (err, data) => {
+            console.log(data)
+            // if(data !== undefined) {
+            //     const changedData = data.toString().replace('"', '').split('\n')
+            //     const errors = findError(changedData)
+            //     if (errors.length > 0) {
+            //         errorsGlobal.push({
+            //             filePath,
+            //             errors
+            //         })
+            //     }
+            //     console.log(errorsGlobal)
+            //
+            // }
 
-                }
-                */
-            })
-        }
+        })
+
 
     }
 
