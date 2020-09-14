@@ -46,7 +46,6 @@ const find = async () => {
             !filePath.toString().includes('dist') === true &&
             !filePath.toString().includes('action') === true &&
             !filePath.toString().includes('.idea') === true
-
         ) {
             await fs.readFile(filePath, 'utf8', (err, data) => {
 
@@ -67,6 +66,8 @@ const find = async () => {
 
             })
 
+        } else {
+            console.log(`else ${filePath}`)
         }
     }
 
