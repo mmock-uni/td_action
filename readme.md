@@ -29,6 +29,6 @@ jobs:
  `ncc build src/index` creates an optimised build (install ncc with `npm i -g @vercel/ncc`)
  ![image](https://user-images.githubusercontent.com/23076328/93134616-4a1d6d00-f6d9-11ea-8e3e-0c023fd25da6.png)
  
-- Check what the interaction of the action was like
+- Check what the interaction of the action was like and deciding what next could be done
 
 ![image](https://user-images.githubusercontent.com/23076328/93134976-dc257580-f6d9-11ea-9ce5-caa0341cb55a.png)
