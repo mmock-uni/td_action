@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1ef1d5-ca96-4313-b420-6280d2fca0ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/action.yml" beforeDir="false" afterPath="$PROJECT_DIR$/action.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +112,7 @@
       <workItem from="1599753096091" duration="5664000" />
       <workItem from="1599841659435" duration="14000" />
       <workItem from="1600113475124" duration="1867000" />
-      <workItem from="1626017107120" duration="3169000" />
+      <workItem from="1626017107120" duration="3277000" />
     </task>
     <task id="LOCAL-00001" summary="/">
       <created>1599663014890</created>
