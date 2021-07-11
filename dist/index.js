@@ -25272,12 +25272,12 @@ const find = async () => {
                     const changedData = data.toString().replace('"', '').split('\n')
                     const errors = findFunctions(changedData, functionList)
                     if (errors.length > 0) {
-                        errorsGlobal.push({
+                        errorsGlobal.push(JSON.stringify({
                             filePath,
                             errors
-                        })
+                        }))
                     }
-                    console.log(errorsGlobal)
+                    console.log(errorsGlobal[errorsGlobal.length - 1])
                 }
 
             })
