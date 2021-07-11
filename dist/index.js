@@ -25257,8 +25257,10 @@ const find = async () => {
     const globber = await glob.create('*')
 
     let errorsGlobal = [] //all errors over all files
-    let issues = core.getInput('issue_number')
+    console.log(core.getInput('who-to-greet'))
+    let issues = core.getInput('issue-number');
     console.log(issues)
+
     for await (const filePath of globber.globGenerator()) {
         let path = filePath
         let ending = path.toString().split(".").pop()
