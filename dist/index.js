@@ -25255,7 +25255,7 @@ const findFunctions = (data, functionList) => {
 
 const find = async () => {
     const globber = await glob.create('*')
-
+    console.log(core.getInput('number-issues'))
     let errorsGlobal = [] //all errors over all files
 
     for await (const filePath of globber.globGenerator()) {
