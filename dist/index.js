@@ -25276,8 +25276,12 @@ const find = async () => {
                             filePath,
                             errors
                         }))
+                        core.setFailed(`weakness found in file ${filePath}, following lines are affected: ${JSON.stringify(errors)}`)
                     }
                     console.log(errorsGlobal[errorsGlobal.length - 1])
+                } else {
+                    console.log('data was undefined')
+                    console.log(filePath)
                 }
 
             })
