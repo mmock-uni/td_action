@@ -25265,9 +25265,6 @@ const find = async () => {
             //open file and run checker
 
             await fs.readFile(filePath, 'utf8', (err, data) => {
-
-                console.log(filePath)
-
                 if(data !== undefined) {
                     const changedData = data.toString().replace('"', '').split('\n')
                     const errors = findFunctions(changedData, functionList)
@@ -25278,7 +25275,6 @@ const find = async () => {
                         }))
                         core.setFailed(`weakness found in file ${filePath}, following lines are affected: ${JSON.stringify(errors)}`)
                     }
-                    console.log(errorsGlobal[errorsGlobal.length - 1])
                 } else {
                     console.log('data was undefined')
                     console.log(filePath)
