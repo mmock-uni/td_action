@@ -63,3 +63,8 @@ const find = async () => {
         }
     }
 }
+try{
+    find()
+} catch (err){
+    core.setFailed('some strange error occurred, please re-run it!')
+}
