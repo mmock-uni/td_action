@@ -25259,6 +25259,8 @@ const find = async () => {
     console.log(`Number of issues the user has interest ${issues}`)
     let errorsGlobal = [] //all errors over all files
 
+
+    
     for await (const filePath of globber.globGenerator()) {
         let path = filePath
         let ending = path.toString().split(".").pop()
