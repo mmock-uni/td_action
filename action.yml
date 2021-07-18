@@ -5,6 +5,10 @@ inputs:
     description: 'selection of issues'
     required: false
     default: ''
+  functions-ban: # id of input
+    description: 'cwe 242'
+    required: false
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
